@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PhysioFlow AI - PhysTech 2026 Dashboard</title>
+  <title>Fizzzio - PhysTech 2026 Buzzboard</title>
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
             <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z" fill="currentColor"/>
             <path d="M12 4C7.58 4 4 7.58 4 12C4 16.42 7.58 20 12 20C16.42 20 20 16.42 20 12C20 7.58 16.42 4 12 4ZM10.5 16.5C10.5 15.67 11.17 15 12 15C12.83 15 13.5 15.67 13.5 16.5C13.5 17.33 12.83 18 12 18C11.17 18 10.5 17.33 10.5 16.5Z" fill="currentColor"/>
           </svg>
-          <span class="logo-text">PhysioFlow <span class="logo-accent">AI</span></span>
+          <span class="logo-text">Fizzzio</span>
         </div>
         <div class="pulse-indicator"></div>
       </div>
@@ -29,19 +29,19 @@
       <nav class="nav-menu">
         <button class="nav-btn active" data-target="dashboard">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
-          <span>Dashboard</span>
+          <span>Buzzboard</span>
         </button>
         <button class="nav-btn" data-target="log">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
-          <span>Log Activity</span>
+          <span>Logzz</span>
         </button>
         <button class="nav-btn" data-target="posture">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          <span>Posture AI Guide</span>
+          <span>Snazzsture</span>
         </button>
         <button class="nav-btn" data-target="recovery">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
-          <span>Recovery Map</span>
+          <span>Rezzzcover</span>
         </button>
       </nav>
 
@@ -58,8 +58,8 @@
       <!-- Header Area -->
       <header class="app-header">
         <div class="header-title-container">
-          <h1 id="view-title">Dashboard</h1>
-          <p class="view-subtitle" id="view-subtitle">Bio-analytics overview & physical activities tracker</p>
+          <h1 id="view-title">Buzzboard</h1>
+          <p class="view-subtitle" id="view-subtitle">Buzz-analytics & fizzzical activities tracker</p>
         </div>
 
         <div class="header-widgets">
@@ -68,7 +68,7 @@
             <span class="streak-emoji">🔥</span>
             <div class="streak-info">
               <span class="streak-count" id="streak-count">5</span>
-              <span class="streak-label">Day Streak</span>
+              <span class="streak-label">Streakzzz</span>
             </div>
           </div>
 
@@ -126,7 +126,7 @@
 
             <div class="stat-card card-glass glow-amber">
               <div class="stat-header">
-                <span class="stat-title">Bio-Balance Index</span>
+                <span class="stat-title">Fizzness Score</span>
                 <span class="stat-icon-container bg-amber-dim">⚖️</span>
               </div>
               <div class="stat-value"><span id="stat-balance">84</span><span class="stat-unit">%</span></div>
@@ -141,7 +141,7 @@
             <!-- Main Chart Card -->
             <div class="dashboard-card card-glass chart-main-card">
               <div class="card-header">
-                <h3>Activity & Energy Intensity Trends</h3>
+                <h3>Activizzzty & Energy Trends</h3>
                 <span class="card-action">Past 7 Days</span>
               </div>
               <div class="chart-container">
@@ -152,7 +152,7 @@
             <!-- Radar Balance Card -->
             <div class="dashboard-card card-glass chart-radar-card">
               <div class="card-header">
-                <h3>Discipline Balance</h3>
+                <h3>Dizzzcipline Balance</h3>
                 <span class="card-action">Activity Types</span>
               </div>
               <div class="chart-container">
@@ -163,7 +163,7 @@
             <!-- Activity Log Table/Cards -->
             <div class="dashboard-card card-glass logs-card">
               <div class="card-header">
-                <h3>Recent Activity Logs</h3>
+                <h3>Recent Logzz</h3>
                 <button class="btn-text" id="view-all-logs-btn">Log New Activity</button>
               </div>
               <div class="logs-container" id="recent-logs-list">
@@ -192,7 +192,7 @@
             <!-- Left Panel: Log Form Card -->
             <div class="log-form-card card-glass">
               <div class="form-header">
-                <h2>Add Physical Activity Log</h2>
+                <h2>Drop a Logzz</h2>
                 <p>Log any physical discipline, sport, exercise, or casual pastime. Anything that moves your body is valid!</p>
               </div>
               
@@ -259,7 +259,7 @@
             <!-- Right Panel: All Logged Activities History Card -->
             <div class="log-history-card card-glass">
               <div class="history-header">
-                <h3>Activity History</h3>
+                <h3>Logzz History</h3>
                 <div class="history-filters">
                   <select id="filter-category" class="filter-select">
                     <option value="all">All Categories</option>
@@ -286,7 +286,7 @@
               <div class="camera-header">
                 <div class="camera-status">
                   <span class="pulse-dot green"></span>
-                  <span class="camera-status-text">AI Skeleton Tracking Engine Active</span>
+                  <span class="camera-status-text">Skeletzzzon Engine Live</span>
                 </div>
                 <div class="exercise-selector">
                   <label for="exercise-select">Select Practice:</label>
@@ -303,11 +303,11 @@
                 <!-- Fallback Mock Screen when webcam is disabled -->
                 <div class="camera-fallback" id="camera-fallback">
                   <div class="fallback-icon">🎥</div>
-                  <h3>Webcam Access Recommended</h3>
-                  <p>Grant camera access to render your feed or toggle our High-Fidelity Simulation Engine below.</p>
+                  <h3>Buzzz-cam Needed</h3>
+                  <p>Grant camera access to render your feed, or fire up our Fizzzulation Engine below.</p>
                   <div class="fallback-buttons">
-                    <button class="btn-primary" id="btn-enable-webcam">Allow Webcam</button>
-                    <button class="btn-secondary" id="btn-simulate-feed">Start Simulated Feed</button>
+                    <button class="btn-primary" id="btn-enable-webcam">Allow Buzzz-cam</button>
+                    <button class="btn-secondary" id="btn-simulate-feed">Start Fizzzulation</button>
                   </div>
                 </div>
 
@@ -328,8 +328,8 @@
               <!-- Calibration Instructions Card -->
               <div class="posture-card card-glass">
                 <div class="p-card-header">
-                  <h3>Alignment Metrics</h3>
-                  <span class="active-badge" id="alignment-quality">Awaiting Calibration</span>
+                  <h3>Fizzion Metrics</h3>
+                  <span class="active-badge" id="alignment-quality">Zzzeroing In...</span>
                 </div>
                 <div class="metrics-feedback-container">
                   <div class="angle-metric">
@@ -353,12 +353,12 @@
               <!-- AI Coaching Agent Card -->
               <div class="posture-card card-glass coaching-card">
                 <div class="p-card-header">
-                  <h3>Real-time Coaching Alerts</h3>
+                  <h3>Buzzcoach Live</h3>
                 </div>
                 <div class="coaching-feed" id="coaching-feed">
                   <div class="coaching-msg system-msg">
                     <span class="msg-time">System</span>
-                    <span class="msg-text">Choose an exercise and click "Start Simulated Feed" or "Allow Webcam" to begin real-time posture analysis.</span>
+                    <span class="msg-text">Choose an exercise and click "Start Fizzzulation" or "Allow Buzzz-cam" to begin live snazzsture analysis.</span>
                   </div>
                 </div>
               </div>
@@ -372,7 +372,7 @@
             <!-- Body Map Card -->
             <div class="body-map-card card-glass">
               <div class="map-header">
-                <h2>Interactive Kinetic Muscle Map</h2>
+                <h2>Muzzle Map™</h2>
                 <p>Click on any highlighted muscle group where you experience stiffness or soreness to load custom rehabilitation and stretching protocols.</p>
                 <div class="view-toggle-buttons">
                   <button class="btn-toggle active" id="btn-view-anterior">Anterior View</button>
@@ -454,7 +454,7 @@
 
               <!-- General Prevention & Warmups -->
               <div class="recovery-card card-glass">
-                <h3>PhysTech Warm-up Checklist</h3>
+                <h3>Fizzzio Warm-up Checklist</h3>
                 <ul class="recovery-checklist">
                   <li><strong>Dynamic Mobility:</strong> 5-10 mins active stretching before recreational hikes, climbing, or cycling.</li>
                   <li><strong>Hydration Benchmark:</strong> Drink 250ml water for every 30 minutes of high-intensity activity.</li>
