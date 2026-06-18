@@ -53,7 +53,7 @@ export function initPosture(showToast) {
 
   exerciseSelect.addEventListener('change', (e) => {
     selectedExercise = e.target.value;
-    addCoachingMessage('System', `Switched practice mode to: ${selectedExercise.toUpperCase()}`, 'system-msg');
+    addCoachingMessage('Fizzz Coach', `Switched Snazzsture mode → ${selectedExercise.toUpperCase()}. Rezzzalibrating...`, 'system-msg');
   });
 
   // Handle canvas sizing
@@ -87,9 +87,9 @@ async function startWebcam() {
     startAnimationLoop();
     
     if (toastCallback) {
-      toastCallback('Webcam Connected', 'AI Skeleton Tracking started.');
+      toastCallback('Buzzz-cam Online 📷', 'Skeletzzzon Engine is live and tracking!');
     }
-    addCoachingMessage('AI Coach', 'Webcam connected. Position your whole body in the frame.', 'system-msg');
+    addCoachingMessage('Fizzz Coach', 'Buzzz-cam online. Position your whole body in the frame.', 'system-msg');
   } catch (err) {
     console.error('Camera connection failed:', err);
     if (toastCallback) {
@@ -110,9 +110,9 @@ function startSimulationOnly() {
   startAnimationLoop();
 
   if (toastCallback) {
-    toastCallback('Simulation Active', 'Started skeleton model emulation.');
+    toastCallback('Fizzzulation Active ⚡', 'Skeletzzzon model is buzzing!');
   }
-  addCoachingMessage('AI Coach', 'Biomechanical simulation initialized. Select an exercise to analyze.', 'system-msg');
+  addCoachingMessage('Fizzz Coach', 'Fizzzulation Engine online. Select a practice to zzzero in.', 'system-msg');
 }
 
 // Stop all tracking loops
@@ -402,15 +402,15 @@ function analyzePostureMetrics() {
       if (kneeAngle < 100 && torsoAngle > 75) {
         badge.textContent = 'Excellent';
         badge.className = 'active-badge success';
-        addCoachingMessage('AI Coach', 'Perfect squat depth. Back angle stable. Keep pushing through heels!', 'success-msg');
+        addCoachingMessage('Fizzz Coach', 'Nailed it! Squat depth is zzzpot on. Drive through those heels!', 'success-msg');
       } else if (kneeAngle >= 140) {
         badge.textContent = 'Analyzing';
         badge.className = 'active-badge';
-        addCoachingMessage('AI Coach', 'Lowering hips down. Maintain straight posture.', 'system-msg');
+        addCoachingMessage('Fizzz Coach', 'Sinking in... keep that spine zzzero-tilted.', 'system-msg');
       } else if (torsoAngle < 70) {
         badge.textContent = 'Form Warning';
         badge.className = 'active-badge danger';
-        addCoachingMessage('AI Coach', 'Chest falling forward. Raise chest and pull shoulders back.', 'warning-msg');
+        addCoachingMessage('Fizzz Coach', '⚠️ Chest caving! Fizzzix it — raise up, shoulders back.', 'warning-msg');
       }
     }
 
@@ -434,11 +434,11 @@ function analyzePostureMetrics() {
       if (armAngle > 170 && kneeAngle < 120) {
         badge.textContent = 'Perfect Pose';
         badge.className = 'active-badge success';
-        addCoachingMessage('AI Coach', 'Warrior alignment is impeccable. Gaze forward over front hand.', 'success-msg');
+        addCoachingMessage('Fizzz Coach', 'Snazzsture is on point! Lock that gaze over your front hand.', 'success-msg');
       } else if (armAngle <= 170) {
         badge.textContent = 'Align Arms';
         badge.className = 'active-badge';
-        addCoachingMessage('AI Coach', 'Arms falling below shoulder level. Lift wrists to form a straight line.', 'warning-msg');
+        addCoachingMessage('Fizzz Coach', '⚠️ Arms droooping! Fizzzix it — wrists level with shoulders.', 'warning-msg');
       }
     }
 
@@ -462,11 +462,11 @@ function analyzePostureMetrics() {
       if (coreAngle > 170) {
         badge.textContent = 'Stable';
         badge.className = 'active-badge success';
-        addCoachingMessage('AI Coach', 'Solid core engagement. Retain straight body alignment. Squeeze glutes.', 'success-msg');
+        addCoachingMessage('Fizzz Coach', 'Zzzolid plank! Core locked in, glutes buzzing. Hold the line!', 'success-msg');
       } else {
         badge.textContent = 'Sagging Hips';
         badge.className = 'active-badge danger';
-        addCoachingMessage('AI Coach', 'Hips sagging towards the floor. Lift midsection to engage rectus abdominis.', 'warning-msg');
+        addCoachingMessage('Fizzz Coach', '⚠️ Hips zzzonking down! Fizzzix it — lift that midsection, fire up the core.', 'warning-msg');
       }
     }
   }
