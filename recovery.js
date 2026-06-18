@@ -177,6 +177,6 @@ function loadMuscleData(key) {
 
   // Call Toast Notification
   if (toastCallback) {
-    toastCallback('Exercises Loaded', `Targeting: ${data.name}`);
+    toastCallback('Rezzzcover Protocol Loaded 💪', `Zzzoning in on: ${data.name}`);
   }
 }
