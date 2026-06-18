@@ -4,7 +4,7 @@ Video Demo: <URL HERE>
 
 Description:
 
-PhysioFlow AI is an interactive, browser-based physical fitness dashboard built for the Binnovative PhysTech 2026 Hackathon. It serves as a personal bio-analytics companion that lets users log any physical activity, visualize trends in their training, analyze their posture in real time using a simulated AI skeleton-tracking engine, and explore a clickable muscle map loaded with sport-specific recovery and stretching protocols. The entire application runs in the browser with zero external JavaScript libraries — all charts, animations, and canvas rendering were written from scratch using native Web APIs.
+PhysioFlow AI is an interactive, browser-based physical fitness dashboard built for the Binnovative PhysTech 2026 Hackathon. It serves as a personal bio-analytics companion that lets users log any physical activity, visualize trends in their training, analyze their posture in real time using a simulated AI skeleton-tracking engine, and explore a clickable muscle map loaded with sport-specific recovery and stretching protocols. The entire application runs in the browser with zero external JavaScript libraries: all charts, animations, and canvas rendering were written from scratch using native Web APIs.
 
 Project Structure & File Descriptions
 
@@ -42,4 +42,4 @@ The Recovery Map module pairs a clickable SVG anatomical diagram with a curated 
 
 Design Philosophy
 
-Every design decision in PhysioFlow AI prioritized a polished, cohesive user experience built on web fundamentals. Using ES6 modules (import/export) kept the code organized and maintainable without a build tool. The single in-memory state pattern in app.js made data flow predictable — all reads and writes go through one place, and re-rendering any component is a simple function call. The choice to simulate AI rather than import a real model kept the project self-contained, fast-loading, and fully functional in any modern browser with no installation required.
+Every design decision in PhysioFlow AI prioritized a polished, cohesive user experience built on web fundamentals. Using ES6 modules (import/export) kept the code organized and maintainable without a build tool. The single in-memory state pattern in app.js made data flow predictable: all reads and writes go through one place, and re-rendering any component is a simple function call. The choice to simulate AI rather than import a real model kept the project self-contained, fast-loading, and fully functional in any modern browser with no installation required.
