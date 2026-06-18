@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  showToast('Fizzzio is Live! ⚡', 'Ready to log some movement? Let the zzzession begin!');
+  showToast('Welcome Back!', 'Ready to log some movement? 🔥');
 });
 
 // View Routing Controller
@@ -139,14 +139,14 @@ function activateView(viewId) {
       subtitle = 'Drop a logzz — any movement counts. Zzzip it in!';
       break;
     case 'posture':
-      title = 'Snazzsture';
-      subtitle = 'Real-time skeletzzzon alignment & buzzcoach feedback';
+      title = 'Posture AI Guide';
+      subtitle = 'Interactive real-time skeletal alignment assessment';
       // Initialize posture webcam system
       initPosture(showToast);
       break;
     case 'recovery':
-      title = 'Rezzzcover';
-      subtitle = 'Tap the Muzzle Map™ to load your rezzzcover protocols';
+      title = 'Recovery Map';
+      subtitle = 'Interactive skeletal muscle stretching & rehab planner';
       break;
   }
 
@@ -201,9 +201,9 @@ function toggleNotificationsList() {
   if (unreadCount > 0) {
     state.notifications.forEach(n => n.read = true);
     document.querySelector('.badge-red').classList.add('hidden');
-    showToast('Buzzz Read ✅', `Reviewed ${unreadCount} alert(s). Zzzone clear!`);
+    showToast('Notifications Read', `Reviewed ${unreadCount} alerts.`);
   } else {
-    showToast('Zzzone Clear 🫧', 'No new alerts — you are all caught up!');
+    showToast('No New Alerts', 'You are all caught up for PhysTech 2026!');
   }
 }
 
@@ -294,7 +294,7 @@ function setupActivityForm() {
     updateSummaryCards();
     
     // Show Toast and Route back
-    showToast('Logzzed! 🔥', `"${name}" is in the books. +${calories} kcal zzzeamed!`);
+    showToast('Activity Logged!', `Successfully added "${name}". +${calories} kcal!`);
     activityForm.reset();
     
     // Set default sliders and dates again
@@ -315,7 +315,7 @@ function setupActivityForm() {
       activityForm.reset();
       durationVal.textContent = '30 mins';
       intensityVal.textContent = '5 (Moderate)';
-      showToast('Zzzeroed Out 🧹', 'Form cleared. Fresh start!');
+      showToast('Form Reset', 'Cleared activity fields.');
     });
   }
 }
@@ -473,5 +473,5 @@ function deleteLog(id) {
   updateSummaryCards();
   updateCharts(state.activities);
 
-  showToast('Zzzapped! 💥', `"${item.name}" has been zzzapped from your logs.`);
+  showToast('Activity Deleted', `Removed "${item.name}" log.`);
 }
