@@ -1,4 +1,4 @@
-PhysioFlow AI
+Fizzzio
 
 Video Demo: <URL HERE>
 
