@@ -53,7 +53,7 @@ export function initPosture(showToast) {
 
   exerciseSelect.addEventListener('change', (e) => {
     selectedExercise = e.target.value;
-    addCoachingMessage('Fizzz Coach', `Switched Snazzsture mode → ${selectedExercise.toUpperCase()}. Rezzzalibrating...`, 'system-msg');
+    addCoachingMessage('Fizzz Coach', `Switched Posture AI mode → ${selectedExercise.toUpperCase()}. Rezzzalibrating...`, 'system-msg');
   });
 
   // Handle canvas sizing
@@ -87,7 +87,7 @@ async function startWebcam() {
     startAnimationLoop();
     
     if (toastCallback) {
-      toastCallback('Buzzz-cam Online 📷', 'Skeletzzzon Engine is live and tracking!');
+      toastCallback('Webcam Connected', 'AI Skeleton Tracking started.');
     }
     addCoachingMessage('Fizzz Coach', 'Buzzz-cam online. Position your whole body in the frame.', 'system-msg');
   } catch (err) {
@@ -110,9 +110,9 @@ function startSimulationOnly() {
   startAnimationLoop();
 
   if (toastCallback) {
-    toastCallback('Fizzzulation Active ⚡', 'Skeletzzzon model is buzzing!');
+    toastCallback('Simulation Active', 'Started skeleton model emulation.');
   }
-  addCoachingMessage('Fizzz Coach', 'Fizzzulation Engine online. Select a practice to zzzero in.', 'system-msg');
+  addCoachingMessage('Fizzz Coach', 'High-Fidelity Simulation Engine online. Select an exercise to analyze.', 'system-msg');
 }
 
 // Stop all tracking loops
@@ -434,7 +434,7 @@ function analyzePostureMetrics() {
       if (armAngle > 170 && kneeAngle < 120) {
         badge.textContent = 'Perfect Pose';
         badge.className = 'active-badge success';
-        addCoachingMessage('Fizzz Coach', 'Snazzsture is on point! Lock that gaze over your front hand.', 'success-msg');
+        addCoachingMessage('Fizzz Coach', 'Posture is on point! Lock that gaze over your front hand.', 'success-msg');
       } else if (armAngle <= 170) {
         badge.textContent = 'Align Arms';
         badge.className = 'active-badge';
