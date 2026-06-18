@@ -17,9 +17,20 @@
     <aside class="sidebar">
       <div class="sidebar-header">
         <div class="logo">
-          <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z" fill="currentColor"/>
-            <path d="M12 4C7.58 4 4 7.58 4 12C4 16.42 7.58 20 12 20C16.42 20 20 16.42 20 12C20 7.58 16.42 4 12 4ZM10.5 16.5C10.5 15.67 11.17 15 12 15C12.83 15 13.5 15.67 13.5 16.5C13.5 17.33 12.83 18 12 18C11.17 18 10.5 17.33 10.5 16.5Z" fill="currentColor"/>
+          <!-- FIZZZIO LOGO: Lightning bolt (energy/fitness) + rising bubbles -->
+          <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Bubbles rising around the bolt -->
+            <circle cx="6"  cy="22" r="3.2" fill="none" stroke="#00d2b4" stroke-width="1.6" opacity="0.9" class="logo-bubble logo-bubble-1"/>
+            <circle cx="26" cy="20" r="2.4" fill="none" stroke="#00d2b4" stroke-width="1.4" opacity="0.8" class="logo-bubble logo-bubble-2"/>
+            <circle cx="4"  cy="13" r="1.8" fill="none" stroke="#ff69b4" stroke-width="1.3" opacity="0.75" class="logo-bubble logo-bubble-3"/>
+            <circle cx="28" cy="11" r="1.4" fill="none" stroke="#ff69b4" stroke-width="1.2" opacity="0.65" class="logo-bubble logo-bubble-4"/>
+            <circle cx="8"  cy="6"  r="1.1" fill="none" stroke="#00d2b4" stroke-width="1.1" opacity="0.5"  class="logo-bubble logo-bubble-5"/>
+            <!-- Lightning bolt — hot pink fill, turquoise outline -->
+            <path d="M19 2 L10 17 H16 L13 30 L24 13 H18 Z"
+                  fill="#ff1493"
+                  stroke="#00d2b4"
+                  stroke-width="1.2"
+                  stroke-linejoin="round"/>
           </svg>
           <span class="logo-text">Fizzzio</span>
         </div>
@@ -37,15 +48,56 @@
         </button>
         <button class="nav-btn" data-target="posture">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          <span>Snazzsture</span>
+          <span>Posture AI Guide</span>
         </button>
         <button class="nav-btn" data-target="recovery">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
-          <span>Rezzzcover</span>
+          <span>Recovery Map</span>
         </button>
       </nav>
 
       <div class="sidebar-footer">
+        <!-- FIZZ COACH: Sidebar — Waving Hello -->
+        <div class="sidebar-coach">
+          <div class="fizz-coach-wrap">
+            <svg width="64" height="90" viewBox="0 0 64 90" xmlns="http://www.w3.org/2000/svg">
+              <!-- Bubbles -->
+              <circle class="fizz-bubble" cx="46" cy="10" r="3.5" fill="none" stroke="#00d2b4" stroke-width="1.5" opacity="0.9"/>
+              <circle class="fizz-bubble" cx="54" cy="4"  r="2.5" fill="none" stroke="#00d2b4" stroke-width="1.5" opacity="0.7"/>
+              <circle class="fizz-bubble" cx="50" cy="18" r="2"   fill="none" stroke="#ff69b4" stroke-width="1.5" opacity="0.8"/>
+              <circle class="fizz-bubble" cx="58" cy="12" r="1.5" fill="none" stroke="#ff69b4" stroke-width="1"   opacity="0.6"/>
+              <!-- Head -->
+              <circle cx="28" cy="18" r="9" fill="none" stroke="#ff1493" stroke-width="2.5"/>
+              <circle cx="25" cy="16" r="1.2" fill="#00d2b4"/>
+              <circle cx="31" cy="16" r="1.2" fill="#00d2b4"/>
+              <path d="M24 21 Q28 24 32 21" fill="none" stroke="#00d2b4" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- Neck + torso -->
+              <line x1="28" y1="27" x2="28" y2="55" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Left arm (down at side) -->
+              <line x1="28" y1="33" x2="16" y2="48" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="16" y1="48" x2="12" y2="56" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Right arm (waving up!) -->
+              <line x1="28" y1="33" x2="44" y2="20" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="44" y1="20" x2="50" y2="12" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Hips -->
+              <line x1="20" y1="55" x2="36" y2="55" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Left leg -->
+              <line x1="22" y1="55" x2="18" y2="72" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="18" y1="72" x2="14" y2="84" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Right leg -->
+              <line x1="34" y1="55" x2="38" y2="72" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="38" y1="72" x2="42" y2="84" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Joints -->
+              <circle cx="28" cy="33" r="3" fill="#00d2b4"/>
+              <circle cx="28" cy="55" r="3" fill="#00d2b4"/>
+              <circle cx="16" cy="48" r="2.5" fill="#00d2b4"/>
+              <circle cx="44" cy="20" r="2.5" fill="#00d2b4"/>
+              <circle cx="18" cy="72" r="2.5" fill="#00d2b4"/>
+              <circle cx="38" cy="72" r="2.5" fill="#00d2b4"/>
+            </svg>
+          </div>
+          <span class="fizz-coach-label">Fizzz Coach</span>
+        </div>
         <div class="hackathon-badge">
           <span class="badge-org">Binnovative</span>
           <span class="badge-event">PhysTech Hackathon</span>
@@ -59,7 +111,7 @@
       <header class="app-header">
         <div class="header-title-container">
           <h1 id="view-title">Buzzboard</h1>
-          <p class="view-subtitle" id="view-subtitle">Buzz-analytics & fizzzical activities tracker</p>
+          <p class="view-subtitle" id="view-subtitle">Bio-analytics overview & physical activities tracker</p>
         </div>
 
         <div class="header-widgets">
@@ -141,7 +193,7 @@
             <!-- Main Chart Card -->
             <div class="dashboard-card card-glass chart-main-card">
               <div class="card-header">
-                <h3>Activizzzty & Energy Trends</h3>
+                <h3>Activity & Energy Intensity Trends</h3>
                 <span class="card-action">Past 7 Days</span>
               </div>
               <div class="chart-container">
@@ -152,7 +204,7 @@
             <!-- Radar Balance Card -->
             <div class="dashboard-card card-glass chart-radar-card">
               <div class="card-header">
-                <h3>Dizzzcipline Balance</h3>
+                <h3>Discipline Balance</h3>
                 <span class="card-action">Activity Types</span>
               </div>
               <div class="chart-container">
@@ -163,7 +215,7 @@
             <!-- Activity Log Table/Cards -->
             <div class="dashboard-card card-glass logs-card">
               <div class="card-header">
-                <h3>Recent Logzz</h3>
+                <h3>Recent Activity Logs</h3>
                 <button class="btn-text" id="view-all-logs-btn">Log New Activity</button>
               </div>
               <div class="logs-container" id="recent-logs-list">
@@ -174,6 +226,35 @@
             <!-- Binnovative Special Highlight Widget -->
             <div class="dashboard-card card-glass highlight-info-card">
               <div class="highlight-overlay-gradient"></div>
+              <!-- FIZZ COACH: Dashboard — Victory Flex -->
+              <div class="highlight-coach-wrap fizz-coach-wrap">
+                <svg width="70" height="96" viewBox="0 0 70 96" xmlns="http://www.w3.org/2000/svg">
+                  <circle class="fizz-bubble" cx="52" cy="6"  r="4"   fill="none" stroke="#00d2b4" stroke-width="1.5" opacity="0.9"/>
+                  <circle class="fizz-bubble" cx="60" cy="14" r="2.5" fill="none" stroke="#ff69b4" stroke-width="1.5" opacity="0.8"/>
+                  <circle class="fizz-bubble" cx="44" cy="2"  r="2"   fill="none" stroke="#00d2b4" stroke-width="1"   opacity="0.7"/>
+                  <circle class="fizz-bubble" cx="62" cy="4"  r="1.5" fill="none" stroke="#ff69b4" stroke-width="1"   opacity="0.6"/>
+                  <circle cx="32" cy="18" r="9" fill="none" stroke="#ff1493" stroke-width="2.5"/>
+                  <circle cx="29" cy="16" r="1.2" fill="#00d2b4"/>
+                  <circle cx="35" cy="16" r="1.2" fill="#00d2b4"/>
+                  <path d="M28 21 Q32 25 36 21" fill="none" stroke="#00d2b4" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="32" y1="27" x2="32" y2="56" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="32" y1="33" x2="14" y2="18" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="14" y1="18" x2="8"  y2="10" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="32" y1="33" x2="50" y2="18" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="50" y1="18" x2="56" y2="10" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="24" y1="56" x2="40" y2="56" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="26" y1="56" x2="22" y2="74" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="22" y1="74" x2="18" y2="88" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="38" y1="56" x2="44" y2="72" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="44" y1="72" x2="52" y2="82" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="32" cy="33" r="3"   fill="#00d2b4"/>
+                  <circle cx="32" cy="56" r="3"   fill="#00d2b4"/>
+                  <circle cx="14" cy="18" r="2.5" fill="#00d2b4"/>
+                  <circle cx="50" cy="18" r="2.5" fill="#00d2b4"/>
+                  <circle cx="22" cy="74" r="2.5" fill="#00d2b4"/>
+                  <circle cx="44" cy="72" r="2.5" fill="#00d2b4"/>
+                </svg>
+              </div>
               <div class="highlight-content">
                 <span class="highlight-label">Featured Program</span>
                 <h2>Book Chapter Publication Series</h2>
@@ -191,9 +272,49 @@
           <div class="log-layout">
             <!-- Left Panel: Log Form Card -->
             <div class="log-form-card card-glass">
-              <div class="form-header">
-                <h2>Drop a Logzz</h2>
+              <div class="form-header log-coach-wrap">
+                <!-- FIZZ COACH: Log View — Running Pose -->
+                <div class="fizz-coach-wrap" style="flex-shrink:0;">
+                  <svg width="60" height="84" viewBox="0 0 60 84" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="fizz-bubble" cx="44" cy="5"  r="3.5" fill="none" stroke="#00d2b4" stroke-width="1.5" opacity="0.9"/>
+                    <circle class="fizz-bubble" cx="52" cy="12" r="2.5" fill="none" stroke="#ff69b4" stroke-width="1.5" opacity="0.8"/>
+                    <circle class="fizz-bubble" cx="38" cy="2"  r="2"   fill="none" stroke="#00d2b4" stroke-width="1"   opacity="0.7"/>
+                    <circle class="fizz-bubble" cx="55" cy="4"  r="1.5" fill="none" stroke="#ff69b4" stroke-width="1"   opacity="0.6"/>
+                    <!-- Head leaning forward -->
+                    <circle cx="26" cy="14" r="8.5" fill="none" stroke="#ff1493" stroke-width="2.5"/>
+                    <circle cx="23" cy="13" r="1.2" fill="#00d2b4"/>
+                    <circle cx="29" cy="13" r="1.2" fill="#00d2b4"/>
+                    <path d="M22 17 Q26 20 30 17" fill="none" stroke="#00d2b4" stroke-width="1.5" stroke-linecap="round"/>
+                    <!-- Torso angled forward -->
+                    <line x1="26" y1="23" x2="30" y2="48" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                    <!-- Left arm pumping back -->
+                    <line x1="26" y1="30" x2="12" y2="38" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="12" y1="38" x2="6"  y2="30" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                    <!-- Right arm pumping forward -->
+                    <line x1="26" y1="30" x2="42" y2="22" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="42" y1="22" x2="50" y2="28" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                    <!-- Hips -->
+                    <line x1="22" y1="48" x2="36" y2="48" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                    <!-- Left leg kicked back -->
+                    <line x1="24" y1="48" x2="14" y2="64" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="14" y1="64" x2="8"  y2="76" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                    <!-- Right leg stepping forward -->
+                    <line x1="34" y1="48" x2="44" y2="60" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="44" y1="60" x2="50" y2="74" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                    <!-- Joints -->
+                    <circle cx="26" cy="30" r="3"   fill="#00d2b4"/>
+                    <circle cx="30" cy="48" r="3"   fill="#00d2b4"/>
+                    <circle cx="12" cy="38" r="2.5" fill="#00d2b4"/>
+                    <circle cx="42" cy="22" r="2.5" fill="#00d2b4"/>
+                    <circle cx="14" cy="64" r="2.5" fill="#00d2b4"/>
+                    <circle cx="44" cy="60" r="2.5" fill="#00d2b4"/>
+                  </svg>
+                  <span class="fizz-coach-label">Fizzz Coach</span>
+                </div>
+                <div>
+                  <h2>Add Physical Activity Log</h2>
                 <p>Log any physical discipline, sport, exercise, or casual pastime. Anything that moves your body is valid!</p>
+                </div><!-- end inner text wrapper -->
               </div>
               
               <form id="activity-form" class="activity-form">
@@ -259,7 +380,7 @@
             <!-- Right Panel: All Logged Activities History Card -->
             <div class="log-history-card card-glass">
               <div class="history-header">
-                <h3>Logzz History</h3>
+                <h3>Activity History</h3>
                 <div class="history-filters">
                   <select id="filter-category" class="filter-select">
                     <option value="all">All Categories</option>
@@ -286,7 +407,7 @@
               <div class="camera-header">
                 <div class="camera-status">
                   <span class="pulse-dot green"></span>
-                  <span class="camera-status-text">Skeletzzzon Engine Live</span>
+                  <span class="camera-status-text">AI Skeleton Tracking Engine Active</span>
                 </div>
                 <div class="exercise-selector">
                   <label for="exercise-select">Select Practice:</label>
@@ -303,11 +424,11 @@
                 <!-- Fallback Mock Screen when webcam is disabled -->
                 <div class="camera-fallback" id="camera-fallback">
                   <div class="fallback-icon">🎥</div>
-                  <h3>Buzzz-cam Needed</h3>
-                  <p>Grant camera access to render your feed, or fire up our Fizzzulation Engine below.</p>
+                  <h3>Webcam Access Recommended</h3>
+                  <p>Grant camera access to render your feed, or toggle our High-Fidelity Simulation Engine below.</p>
                   <div class="fallback-buttons">
-                    <button class="btn-primary" id="btn-enable-webcam">Allow Buzzz-cam</button>
-                    <button class="btn-secondary" id="btn-simulate-feed">Start Fizzzulation</button>
+                    <button class="btn-primary" id="btn-enable-webcam">Allow Webcam</button>
+                    <button class="btn-secondary" id="btn-simulate-feed">Start Simulated Feed</button>
                   </div>
                 </div>
 
@@ -329,7 +450,7 @@
               <div class="posture-card card-glass">
                 <div class="p-card-header">
                   <h3>Fizzion Metrics</h3>
-                  <span class="active-badge" id="alignment-quality">Zzzeroing In...</span>
+                  <span class="active-badge" id="alignment-quality">Awaiting Calibration</span>
                 </div>
                 <div class="metrics-feedback-container">
                   <div class="angle-metric">
@@ -352,13 +473,49 @@
 
               <!-- AI Coaching Agent Card -->
               <div class="posture-card card-glass coaching-card">
-                <div class="p-card-header">
+                <div class="p-card-header posture-coach-inline">
+                  <!-- FIZZ COACH: Posture View — Deep Squat -->
+                  <div class="fizz-coach-wrap" style="flex-shrink:0;">
+                    <svg width="56" height="72" viewBox="0 0 56 72" xmlns="http://www.w3.org/2000/svg">
+                      <circle class="fizz-bubble" cx="42" cy="4"  r="3.5" fill="none" stroke="#00d2b4" stroke-width="1.5" opacity="0.9"/>
+                      <circle class="fizz-bubble" cx="50" cy="11" r="2.5" fill="none" stroke="#ff69b4" stroke-width="1.5" opacity="0.8"/>
+                      <circle class="fizz-bubble" cx="36" cy="1"  r="2"   fill="none" stroke="#00d2b4" stroke-width="1"   opacity="0.7"/>
+                      <!-- Head (lowered for squat) -->
+                      <circle cx="28" cy="13" r="8" fill="none" stroke="#ff1493" stroke-width="2.5"/>
+                      <circle cx="25" cy="12" r="1.2" fill="#00d2b4"/>
+                      <circle cx="31" cy="12" r="1.2" fill="#00d2b4"/>
+                      <path d="M24 16 Q28 19 32 16" fill="none" stroke="#00d2b4" stroke-width="1.5" stroke-linecap="round"/>
+                      <!-- Short torso (squatting down) -->
+                      <line x1="28" y1="21" x2="28" y2="40" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <!-- Arms extended forward for balance -->
+                      <line x1="28" y1="27" x2="10" y2="24" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <line x1="10" y1="24" x2="4"  y2="26" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <line x1="28" y1="27" x2="46" y2="24" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <line x1="46" y1="24" x2="52" y2="26" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <!-- Hips low -->
+                      <line x1="20" y1="40" x2="36" y2="40" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <!-- Left leg bent outward -->
+                      <line x1="22" y1="40" x2="10" y2="54" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <line x1="10" y1="54" x2="8"  y2="66" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <!-- Right leg bent outward -->
+                      <line x1="34" y1="40" x2="46" y2="54" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <line x1="46" y1="54" x2="48" y2="66" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <!-- Joints -->
+                      <circle cx="28" cy="27" r="3"   fill="#00d2b4"/>
+                      <circle cx="28" cy="40" r="3"   fill="#00d2b4"/>
+                      <circle cx="10" cy="24" r="2.5" fill="#00d2b4"/>
+                      <circle cx="46" cy="24" r="2.5" fill="#00d2b4"/>
+                      <circle cx="10" cy="54" r="2.5" fill="#00d2b4"/>
+                      <circle cx="46" cy="54" r="2.5" fill="#00d2b4"/>
+                    </svg>
+                    <span class="fizz-coach-label">Fizzz Coach</span>
+                  </div>
                   <h3>Buzzcoach Live</h3>
                 </div>
                 <div class="coaching-feed" id="coaching-feed">
                   <div class="coaching-msg system-msg">
                     <span class="msg-time">System</span>
-                    <span class="msg-text">Choose an exercise and click "Start Fizzzulation" or "Allow Buzzz-cam" to begin live snazzsture analysis.</span>
+                    <span class="msg-text">Choose an exercise and click "Start Simulated Feed" or "Allow Webcam" to begin real-time posture analysis.</span>
                   </div>
                 </div>
               </div>
@@ -372,7 +529,7 @@
             <!-- Body Map Card -->
             <div class="body-map-card card-glass">
               <div class="map-header">
-                <h2>Muzzle Map™</h2>
+                <h2>Kinetic Muzzle Map™</h2>
                 <p>Click on any highlighted muscle group where you experience stiffness or soreness to load custom rehabilitation and stretching protocols.</p>
                 <div class="view-toggle-buttons">
                   <button class="btn-toggle active" id="btn-view-anterior">Anterior View</button>
@@ -444,7 +601,42 @@
             <!-- Recovery Sidebar -->
             <div class="recovery-sidebar">
               <div class="recovery-card card-glass active" id="muscle-instructions-card">
-                <h3 id="selected-muscle-name">Select a Muscle Group</h3>
+                <div class="recovery-coach-inline" style="margin-bottom:10px;">
+                  <!-- FIZZ COACH: Recovery View — Cobra Stretch -->
+                  <div class="fizz-coach-wrap" style="flex-shrink:0;">
+                    <svg width="88" height="52" viewBox="0 0 88 52" xmlns="http://www.w3.org/2000/svg">
+                      <circle class="fizz-bubble" cx="70" cy="4"  r="3.5" fill="none" stroke="#00d2b4" stroke-width="1.5" opacity="0.9"/>
+                      <circle class="fizz-bubble" cx="78" cy="11" r="2.5" fill="none" stroke="#ff69b4" stroke-width="1.5" opacity="0.8"/>
+                      <circle class="fizz-bubble" cx="64" cy="1"  r="2"   fill="none" stroke="#00d2b4" stroke-width="1"   opacity="0.7"/>
+                      <circle class="fizz-bubble" cx="80" cy="2"  r="1.5" fill="none" stroke="#ff69b4" stroke-width="1"   opacity="0.6"/>
+                      <!-- Head (lifted up for cobra) -->
+                      <circle cx="72" cy="14" r="8" fill="none" stroke="#ff1493" stroke-width="2.5"/>
+                      <circle cx="69" cy="13" r="1.2" fill="#00d2b4"/>
+                      <circle cx="75" cy="13" r="1.2" fill="#00d2b4"/>
+                      <path d="M68 17 Q72 21 76 17" fill="none" stroke="#00d2b4" stroke-width="1.5" stroke-linecap="round"/>
+                      <!-- Body lying horizontal, chest raised -->
+                      <line x1="72" y1="22" x2="52" y2="32" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <line x1="52" y1="32" x2="20" y2="34" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <!-- Arms propping up -->
+                      <line x1="60" y1="26" x2="60" y2="42" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <line x1="60" y1="42" x2="66" y2="44" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <line x1="44" y1="30" x2="44" y2="44" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <line x1="44" y1="44" x2="38" y2="44" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <!-- Legs flat behind -->
+                      <line x1="20" y1="34" x2="10" y2="38" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <line x1="20" y1="34" x2="10" y2="32" stroke="#ff1493" stroke-width="2.5" stroke-linecap="round"/>
+                      <!-- Joints -->
+                      <circle cx="52" cy="32" r="3"   fill="#00d2b4"/>
+                      <circle cx="60" cy="26" r="2.5" fill="#00d2b4"/>
+                      <circle cx="44" cy="30" r="2.5" fill="#00d2b4"/>
+                      <circle cx="60" cy="42" r="2.5" fill="#00d2b4"/>
+                      <circle cx="44" cy="44" r="2.5" fill="#00d2b4"/>
+                      <circle cx="20" cy="34" r="2.5" fill="#00d2b4"/>
+                    </svg>
+                    <span class="fizz-coach-label">Fizzz Coach</span>
+                  </div>
+                  <h3 id="selected-muscle-name">Select a Muscle Group</h3>
+                </div>
                 <p class="muscle-desc" id="selected-muscle-desc">Interactive stretches, alignment reminders, and injury prevention exercises will load here once you select a muscle on the diagram.</p>
                 
                 <div class="stretches-list" id="stretches-list">
@@ -454,7 +646,7 @@
 
               <!-- General Prevention & Warmups -->
               <div class="recovery-card card-glass">
-                <h3>Fizzzio Warm-up Checklist</h3>
+                <h3>PhysTech Warm-up Checklist</h3>
                 <ul class="recovery-checklist">
                   <li><strong>Dynamic Mobility:</strong> 5-10 mins active stretching before recreational hikes, climbing, or cycling.</li>
                   <li><strong>Hydration Benchmark:</strong> Drink 250ml water for every 30 minutes of high-intensity activity.</li>
