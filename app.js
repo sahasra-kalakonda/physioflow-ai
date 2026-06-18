@@ -16,7 +16,7 @@ const state = {
   notifications: [
     { title: 'PhysTech Presentation Registration', body: 'Presentation registration deadline is firm: June 27 at 12pm EST. Register early!', read: false },
     { title: 'Book Chapter Invitation', body: 'Outstanding projects will be invited to write a chapter in the Binnovative series!', read: false },
-    { title: 'Welcome to PhysioFlow AI', body: 'Log your movement and test your alignment in the Posture Guide.', read: true }
+    { title: 'Welcome to Fizzzio', body: 'Log your movement and test your alignment in the Posture Guide.', read: true }
   ]
 };
 
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  showToast('Welcome Back!', 'Ready to log some movement? 🔥');
+  showToast('Fizzzio is Live! ⚡', 'Ready to log some movement? Let the zzzession begin!');
 });
 
 // View Routing Controller
@@ -126,27 +126,27 @@ function activateView(viewId) {
   if (!targetView) return;
 
   // Set titles
-  let title = 'Dashboard';
-  let subtitle = 'Bio-analytics overview & physical activities tracker';
+  let title = 'Buzzboard';
+  let subtitle = 'Buzz-analytics & fizzzical activities tracker';
   
   switch(viewId) {
     case 'dashboard':
-      title = 'Dashboard';
-      subtitle = 'Bio-analytics overview & physical activities tracker';
+      title = 'Buzzboard';
+      subtitle = 'Buzz-analytics & fizzzical activities tracker';
       break;
     case 'log':
-      title = 'Log Activity';
-      subtitle = 'Record sports, workouts, training, and casual movement';
+      title = 'Logzz';
+      subtitle = 'Drop a logzz — any movement counts. Zzzip it in!';
       break;
     case 'posture':
-      title = 'Posture AI Guide';
-      subtitle = 'Interactive real-time skeletal alignment assessment';
+      title = 'Snazzsture';
+      subtitle = 'Real-time skeletzzzon alignment & buzzcoach feedback';
       // Initialize posture webcam system
       initPosture(showToast);
       break;
     case 'recovery':
-      title = 'Recovery Map';
-      subtitle = 'Interactive skeletal muscle stretching & rehab planner';
+      title = 'Rezzzcover';
+      subtitle = 'Tap the Muzzle Map™ to load your rezzzcover protocols';
       break;
   }
 
@@ -201,9 +201,9 @@ function toggleNotificationsList() {
   if (unreadCount > 0) {
     state.notifications.forEach(n => n.read = true);
     document.querySelector('.badge-red').classList.add('hidden');
-    showToast('Notifications Read', `Reviewed ${unreadCount} alerts.`);
+    showToast('Buzzz Read ✅', `Reviewed ${unreadCount} alert(s). Zzzone clear!`);
   } else {
-    showToast('No New Alerts', 'You are all caught up for PhysTech 2026!');
+    showToast('Zzzone Clear 🫧', 'No new alerts — you are all caught up!');
   }
 }
 
@@ -294,7 +294,7 @@ function setupActivityForm() {
     updateSummaryCards();
     
     // Show Toast and Route back
-    showToast('Activity Logged!', `Successfully added "${name}". +${calories} kcal!`);
+    showToast('Logzzed! 🔥', `"${name}" is in the books. +${calories} kcal zzzeamed!`);
     activityForm.reset();
     
     // Set default sliders and dates again
@@ -315,7 +315,7 @@ function setupActivityForm() {
       activityForm.reset();
       durationVal.textContent = '30 mins';
       intensityVal.textContent = '5 (Moderate)';
-      showToast('Form Reset', 'Cleared activity fields.');
+      showToast('Zzzeroed Out 🧹', 'Form cleared. Fresh start!');
     });
   }
 }
@@ -473,5 +473,5 @@ function deleteLog(id) {
   updateSummaryCards();
   updateCharts(state.activities);
 
-  showToast('Activity Deleted', `Removed "${item.name}" log.`);
+  showToast('Zzzapped! 💥', `"${item.name}" has been zzzapped from your logs.`);
 }
