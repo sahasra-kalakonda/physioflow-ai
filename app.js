@@ -1,24 +1,35 @@
-// PHYSIOFLOW AI - MAIN APPLICATION MODULE
+// FIZZZIO - MAIN APPLICATION MODULE
 import { initCharts, updateCharts } from './charts.js';
 import { initPosture, stopPosture } from './posture.js';
 import { initRecovery } from './recovery.js';
+import {
+  apiRegister, apiLogin, apiLogout, apiMe,
+  apiListActivities, apiCreateActivity, apiDeleteActivity,
+  apiListNotifications, apiMarkAllNotificationsRead,
+} from './api.js';
 
-// Central State
+// Central State — now a local CACHE of what the backend holds.
+// On login, we pull activities/notifications/streak from the API
+// and keep them here so the existing render functions don't need
+// to change. Every mutation (create/delete) round-trips to the
+// backend FIRST, then updates this cache from the real response.
 const state = {
-  streak: 5,
-  activities: [
-    { id: 1, name: 'Vinyasa Yoga Flow', category: 'flexibility', duration: 45, intensity: 4, calories: 160, date: '2026-06-18T08:30', notes: 'Felt good, hamstrings a bit tight.' },
-    { id: 2, name: 'Trail Run (Stoneham Loop)', category: 'cardio', duration: 30, intensity: 7, calories: 350, date: '2026-06-17T17:15', notes: 'Beat my 5k personal best by 12 seconds!' },
-    { id: 3, name: 'Recreational Gardening', category: 'recreation', duration: 75, intensity: 2, calories: 180, date: '2026-06-16T14:00', notes: 'Planted tomato beds and weeded. Mild lower back fatigue.' },
-    { id: 4, name: 'Deep Squat Posture Drill', category: 'fitness', duration: 15, intensity: 6, calories: 95, date: '2026-06-15T10:00', notes: 'Form focused, angles checking using AI Camera.' },
-    { id: 5, name: 'Charles River Kayaking', category: 'recreation', duration: 90, intensity: 4, calories: 420, date: '2026-06-14T11:30', notes: 'Beautiful day, core and arms got a solid workout.' }
-  ],
-  notifications: [
-    { title: 'PhysTech Presentation Registration', body: 'Presentation registration deadline is firm: June 27 at 12pm EST. Register early!', read: false },
-    { title: 'Book Chapter Invitation', body: 'Outstanding projects will be invited to write a chapter in the Binnovative series!', read: false },
-    { title: 'Welcome to Fizzzio', body: 'Log your movement and test your alignment in the Posture Guide.', read: true }
-  ]
+  streak: 0,
+  activities: [],
+  notifications: [],
+  currentUser: null,
 };
+
+// Auth DOM Elements
+const authOverlay = document.getElementById('auth-overlay');
+const loginForm = document.getElementById('login-form');
+const registerForm = document.getElementById('register-form');
+const loginError = document.getElementById('login-error');
+const registerError = document.getElementById('register-error');
+const showRegisterLink = document.getElementById('show-register');
+const showLoginLink = document.getElementById('show-login');
+const userDisplayNameEl = document.getElementById('user-display-name');
+const btnLogout = document.getElementById('btn-logout');
 
 // DOM Elements
 const views = document.querySelectorAll('.app-view');
@@ -37,34 +48,162 @@ const notificationBell = document.getElementById('notification-bell');
 const allLogsListContainer = document.getElementById('all-logs-list');
 const filterCategoryEl = document.getElementById('filter-category');
 
-// Init application
+// Init application — gated behind auth.
 document.addEventListener('DOMContentLoaded', () => {
-  setupNavigation();
-  setupActivityForm();
+  setupAuthForms();
+  bootstrapSession();
+});
+
+// Check if a session cookie is already valid (e.g. page refresh).
+// If so, skip straight to the app. If not, show the auth overlay.
+async function bootstrapSession() {
+  try {
+    const { user } = await apiMe();
+    if (user) {
+      await enterApp(user);
+      return;
+    }
+  } catch (_) {
+    // Backend unreachable or no session — fall through to login screen.
+  }
+  showAuthOverlay();
+}
+
+function showAuthOverlay() {
+  authOverlay.classList.remove('hidden');
+}
+
+function hideAuthOverlay() {
+  authOverlay.classList.add('hidden');
+}
+
+function setupAuthForms() {
+  showRegisterLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    loginForm.classList.add('hidden');
+    registerForm.classList.remove('hidden');
+    loginError.textContent = '';
+  });
+
+  showLoginLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    registerForm.classList.add('hidden');
+    loginForm.classList.remove('hidden');
+    registerError.textContent = '';
+  });
+
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    loginError.textContent = '';
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+
+    try {
+      const { user } = await apiLogin(email, password);
+      await enterApp(user);
+    } catch (err) {
+      loginError.textContent = err.message;
+    }
+  });
+
+  registerForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    registerError.textContent = '';
+    const displayName = document.getElementById('register-name').value.trim();
+    const email = document.getElementById('register-email').value.trim();
+    const password = document.getElementById('register-password').value;
+
+    try {
+      const { user } = await apiRegister(email, password, displayName);
+      await enterApp(user);
+    } catch (err) {
+      registerError.textContent = err.message;
+    }
+  });
+
+  if (btnLogout) {
+    btnLogout.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      try {
+        await apiLogout();
+      } catch (_) {
+        // Even if the network call fails, drop the user back to the login screen.
+      }
+      state.currentUser = null;
+      state.activities = [];
+      state.notifications = [];
+      stopPosture();
+      loginForm.reset();
+      registerForm.reset();
+      loginForm.classList.remove('hidden');
+      registerForm.classList.add('hidden');
+      showAuthOverlay();
+    });
+  }
+}
+
+// Called after a successful login or register — loads the user's
+// real data from the backend, then boots the rest of the UI.
+async function enterApp(user) {
+  state.currentUser = user;
+  state.streak = user.streak || 0;
+  userDisplayNameEl.textContent = user.display_name;
+
+  await refreshActivitiesFromServer();
+  await refreshNotificationsFromServer();
+
+  hideAuthOverlay();
+  initAppUI();
+}
+
+async function refreshActivitiesFromServer() {
+  const { activities } = await apiListActivities();
+  state.activities = activities;
+}
+
+async function refreshNotificationsFromServer() {
+  const { notifications } = await apiListNotifications();
+  state.notifications = notifications;
+  updateNotificationBadge();
+}
+
+function updateNotificationBadge() {
+  const unreadCount = state.notifications.filter(n => !n.read).length;
+  const badge = document.querySelector('.badge-red');
+  if (badge) {
+    badge.classList.toggle('hidden', unreadCount === 0);
+  }
+}
+
+// Runs once per login — wires up everything that used to run
+// unconditionally on DOMContentLoaded.
+let appUIInitialized = false;
+function initAppUI() {
   renderRecentLogs();
   renderAllLogs();
   updateSummaryCards();
-  
-  // Initialize Submodules
   initCharts(state.activities);
+  updateNotificationBadge();
+
+  if (appUIInitialized) return; // listeners only need to attach once
+  appUIInitialized = true;
+
+  setupNavigation();
+  setupActivityForm();
   initRecovery(showToast);
-  
-  // Notifications click listener
+
   notificationBell.addEventListener('click', toggleNotificationsList);
 
-  // Quick-action navigation redirects
   if (viewAllLogsBtn) {
     viewAllLogsBtn.addEventListener('click', () => switchView('log'));
   }
 
-  // Filter Category Handler
   if (filterCategoryEl) {
     filterCategoryEl.addEventListener('change', (e) => {
       renderAllLogs(e.target.value);
     });
   }
 
-  // Log Deletion delegation
   if (allLogsListContainer) {
     allLogsListContainer.addEventListener('click', (e) => {
       const deleteBtn = e.target.closest('.btn-delete-log');
@@ -75,8 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  showToast('Welcome Back!', 'Ready to log some movement? 🔥');
-});
+  showToast('Fizzzio is Live! ⚡', 'Ready to log some movement? Let the zzzession begin!');
+}
 
 // View Routing Controller
 function setupNavigation() {
@@ -196,14 +335,19 @@ export function showToast(title, bodyText) {
 }
 
 // Notifications Popup
-function toggleNotificationsList() {
+async function toggleNotificationsList() {
   const unreadCount = state.notifications.filter(n => !n.read).length;
   if (unreadCount > 0) {
-    state.notifications.forEach(n => n.read = true);
-    document.querySelector('.badge-red').classList.add('hidden');
-    showToast('Notifications Read', `Reviewed ${unreadCount} alerts.`);
+    try {
+      await apiMarkAllNotificationsRead();
+      state.notifications.forEach(n => n.read = 1);
+      document.querySelector('.badge-red').classList.add('hidden');
+      showToast('Buzzz Read ✅', `Reviewed ${unreadCount} alert(s). Zzzone clear!`);
+    } catch (err) {
+      showToast('Oops', `Could not update notifications: ${err.message}`);
+    }
   } else {
-    showToast('No New Alerts', 'You are all caught up for PhysTech 2026!');
+    showToast('Zzzone Clear 🫧', 'No new alerts — you are all caught up!');
   }
 }
 
@@ -260,7 +404,7 @@ function setupActivityForm() {
   dateInput.value = now.toISOString().slice(0, 16);
 
   // Form submit
-  activityForm.addEventListener('submit', (e) => {
+  activityForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const name = document.getElementById('act-name').value;
@@ -271,43 +415,43 @@ function setupActivityForm() {
     const date = document.getElementById('act-date').value;
     const notes = document.getElementById('act-notes').value;
 
-    const newLog = {
-      id: Date.now(),
-      name,
-      category,
-      duration,
-      intensity,
-      calories,
-      date,
-      notes
-    };
+    const submitBtn = activityForm.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
 
-    // Prepend to array
-    state.activities.unshift(newLog);
-    
-    // Increment Streak if not already updated today
-    state.streak += 1;
-    
-    // Re-render
-    renderRecentLogs();
-    renderAllLogs(filterCategoryEl.value);
-    updateSummaryCards();
-    
-    // Show Toast and Route back
-    showToast('Activity Logged!', `Successfully added "${name}". +${calories} kcal!`);
-    activityForm.reset();
-    
-    // Set default sliders and dates again
-    durationVal.textContent = '30 mins';
-    intensityVal.textContent = '5 (Moderate)';
-    const nowReset = new Date();
-    nowReset.setMinutes(nowReset.getMinutes() - nowReset.getTimezoneOffset());
-    dateInput.value = nowReset.toISOString().slice(0, 16);
-    
-    // Route back to dashboard
-    setTimeout(() => {
-      switchView('dashboard');
-    }, 800);
+    try {
+      const { activity, streak } = await apiCreateActivity({
+        name, category, duration, intensity, calories, date, notes,
+      });
+
+      // Prepend the server-confirmed record (has the real DB id).
+      state.activities.unshift(activity);
+      state.streak = streak;
+
+      // Re-render
+      renderRecentLogs();
+      renderAllLogs(filterCategoryEl.value);
+      updateSummaryCards();
+
+      // Show Toast and Route back
+      showToast('Logzzed! 🔥', `"${name}" is in the books. +${calories} kcal zzzeamed!`);
+      activityForm.reset();
+
+      // Set default sliders and dates again
+      durationVal.textContent = '30 mins';
+      intensityVal.textContent = '5 (Moderate)';
+      const nowReset = new Date();
+      nowReset.setMinutes(nowReset.getMinutes() - nowReset.getTimezoneOffset());
+      dateInput.value = nowReset.toISOString().slice(0, 16);
+
+      // Route back to dashboard
+      setTimeout(() => {
+        switchView('dashboard');
+      }, 800);
+    } catch (err) {
+      showToast('Logzz Failed', err.message);
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
   });
 
   if (btnCancelLog) {
@@ -315,7 +459,7 @@ function setupActivityForm() {
       activityForm.reset();
       durationVal.textContent = '30 mins';
       intensityVal.textContent = '5 (Moderate)';
-      showToast('Form Reset', 'Cleared activity fields.');
+      showToast('Zzzeroed Out 🧹', 'Form cleared. Fresh start!');
     });
   }
 }
@@ -462,16 +606,22 @@ function renderAllLogs(filter = 'all') {
 }
 
 // Delete Log function
-function deleteLog(id) {
+async function deleteLog(id) {
   const item = state.activities.find(a => a.id === id);
   if (!item) return;
 
-  state.activities = state.activities.filter(a => a.id !== id);
+  try {
+    await apiDeleteActivity(id);
 
-  renderRecentLogs();
-  renderAllLogs(filterCategoryEl.value);
-  updateSummaryCards();
-  updateCharts(state.activities);
+    state.activities = state.activities.filter(a => a.id !== id);
 
-  showToast('Activity Deleted', `Removed "${item.name}" log.`);
+    renderRecentLogs();
+    renderAllLogs(filterCategoryEl.value);
+    updateSummaryCards();
+    updateCharts(state.activities);
+
+    showToast('Zzzapped! 💥', `"${item.name}" has been zzzapped from your logs.`);
+  } catch (err) {
+    showToast('Delete Failed', err.message);
+  }
 }
